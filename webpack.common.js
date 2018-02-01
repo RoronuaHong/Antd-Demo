@@ -72,16 +72,24 @@ const config = {
             },
             /*压缩图片*/
             {
-                test: /\.(png|svg|jpg|gif|jepg)$/,
+                test: /\.(png|svg|jpg|gif|jpeg|ico)$/,
                 use: [
-                    "url-loader?limit=819200&name=images/[name].[ext]",
-                    "image-webpack-loader?{pngquant:{quality: '50-70', speed: 8}, mozjpeg: {quality: 50}}"
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10,
+                            name: "img/[name].[ext]?[hash]"
+                        }
+                    }
                 ]
             },
             /*配置字体文件*/
             {
-                test: /\.(png|woff|woff2?|eot|ttf|otf)($|\?)/i,
-                loader: 'url-loader?limit=5000'
+                test: /\.(woff|woff2?|eot|ttf|otf)($|\?)/i,
+                loader: 'url-loader',
+                options: {
+                    limit: 5000
+                }
             }
         ]
     },

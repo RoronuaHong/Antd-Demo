@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import '../../styles/notfound.less';
-// import '../../styles/notfound.css';
+
+import NotfoundImg from "../../images/notfound.png";
+import '../../styles/notfound.less'; 
 
 class NotFound extends PureComponent {
     render() {
@@ -8,7 +9,7 @@ class NotFound extends PureComponent {
             <React.Fragment>
                 <div className="notFound">
                     <div className="notFound-content">
-                        <img src="../images/notfound.png" alt="" />
+                        <img src={ NotfoundImg } alt="" />
                         <p>抱歉！您访问的页面不存在</p>
                     </div>
                 </div>

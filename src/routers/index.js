@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter, BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Login from "../containers/Login";
-import NotFound from "../containers/ErrorPage/NotFound";
+import NotFound from "../containers/ErrorPage/NotFound"
 
 export default function Routers() {
     return (
