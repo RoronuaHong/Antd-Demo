@@ -20,6 +20,7 @@
   "homepage": "https://github.com/RoronuaHong/NuoMi#readme",
   "dependencies": {
     "es6-promise": "^4.2.2",
+    "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-swipe": "^5.1.1",

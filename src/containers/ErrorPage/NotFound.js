@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
-import NotfoundImg from "../../images/notfound.png";
-import '../../styles/notfound.less'; 
+import NotfoundImg from "../../images/errorpage/notfound.png";
+import '../../styles/notfound.less';
 
 class NotFound extends PureComponent {
     render() {
