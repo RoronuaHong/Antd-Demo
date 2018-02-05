@@ -8,12 +8,19 @@ import { loginInfo } from "../../fetch/login";
 const FormItem = Form.Item;
 
 class Login extends PureComponent {
+    /*初始化用户名和密码*/
+    state = {
+        userName: "",
+        pwd: ""
+    }
+
+    /*登录提交功能*/
     handleSubmit = (e) => {
         e.preventDefault();
 
         this.props.form.validateFields((err, values) => {
             if(!err) {
-                const result = loginInfo(values); 
+                const result = loginInfo(values);
 
                 result.then(res => {
                     return res.json();
@@ -27,14 +34,44 @@ class Login extends PureComponent {
                             this.props.history.push("/set");
                     } else {
                         message.error(data.msg);
+                        // 清空表单form
+                        // this.props.form.resetFields();
                     }
                 }).catch(err => console.log(err));
             }
         });
     }
 
+    /*绑定用户名的Input*/
+    userInput = (e) => {
+        this.setState({
+            userName: e.target.value
+        });
+    }
+
+    /*绑定用户名的Input*/
+    pwdInput = (e) => {
+        this.setState({
+            pwd: e.target.value
+        });
+    }
+
+    /*清空Input*/
+    emitEmpty = (clearInput, name) => {
+        clearInput({
+            pwd: ""
+        });
+
+        this.setState({
+            pwd: ""
+        });
+    }
+
     render() {
-        const { getFieldDecorator } = this.props.form;
+        const { getFieldDecorator, setFieldsValue } = this.props.form,
+            { userName, pwd } = this.state,
+            userNameSuffix = userName ? <Icon type="close-circle" onClick={() => { this.emitEmpty(setFieldsValue, "userName") }} /> : "",
+            pwdSuffix = pwd ? <Icon type="close-circle" onClick={() => { this.emitEmpty(setFieldsValue, "pwd") }} /> : "";
 
         return (
             <React.Fragment>
@@ -55,9 +92,15 @@ class Login extends PureComponent {
                                         rules: [{
                                             required: true,
                                             message: "请输入用户名!"
-                                        }]
+                                        }],
+                                        getFieldValue: userName
                                     })(
-                                        <Input type="user" placeholder="请输入用户名" />
+                                        <Input
+                                            suffix={ userNameSuffix }
+                                            type="user"
+                                            onChange={ this.userInput }
+                                            placeholder="请输入用户名"
+                                        />
                                     )
                                 }
                             </FormItem>
@@ -69,7 +112,12 @@ class Login extends PureComponent {
                                             message: "请输入密码!"
                                         }]
                                     })(
-                                        <Input type="password" placeholder="请输入密码" />
+                                        <Input
+                                            suffix={ pwdSuffix }
+                                            type="password"
+                                            onChange={ this.pwdInput }
+                                            placeholder="请输入密码"
+                                        />
                                     )
                                 }
                             </FormItem>
