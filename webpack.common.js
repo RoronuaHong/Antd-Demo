@@ -42,7 +42,10 @@ const config = {
                         loader: "css-loader"
                     }, 
                     {
-                        loader: "less-loader"
+                        loader: "less-loader",
+                        options: {
+                            modifyVars: theme
+                        }
                     },
                     {
                         loader: "postcss-loader",

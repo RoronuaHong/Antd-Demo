@@ -19,10 +19,13 @@ function obj2Params(obj) {
 export function post(url, paramsObj) {
     const result = fetch(url, {
         method: "POST",
+        credentials: "include",
         headers: {
-            credentials: "include",
-            "Accept": "application/json, text/json, */*"
+            "Accept": "application/json, text/json, */*",
+            "Content-Type": "application/x-www-form-urlencoded"
         },
         body: obj2Params(paramsObj)
     });
+
+    return result;
 }

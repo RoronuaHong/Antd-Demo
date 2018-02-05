@@ -74,7 +74,7 @@
     "webpack-merge": "^4.1.1"
   },
   "theme": {
-    "brand-primary": "#f93",
+    "primary-color": "#fc652f",
     "color-text-base": "#333"
   }
 }
