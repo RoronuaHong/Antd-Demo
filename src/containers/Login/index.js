@@ -25,8 +25,6 @@ class Login extends PureComponent {
                 result.then(res => {
                     return res.json();
                 }).then(data => {
-                    console.log(data);
-
                     if (data.state == 200) {
                         data.data === "admin" ? 
                             this.props.history.push("/compony")
@@ -92,8 +90,7 @@ class Login extends PureComponent {
                                         rules: [{
                                             required: true,
                                             message: "请输入用户名!"
-                                        }],
-                                        getFieldValue: userName
+                                        }]
                                     })(
                                         <Input
                                             suffix={ userNameSuffix }
