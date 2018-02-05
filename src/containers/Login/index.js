@@ -11,7 +11,7 @@ class Login extends PureComponent {
     /*初始化用户名和密码*/
     state = {
         userName: "",
-        pwd: ""
+        password: ""
     }
 
     /*登录提交功能*/
@@ -52,26 +52,26 @@ class Login extends PureComponent {
     /*绑定用户名的Input*/
     pwdInput = (e) => {
         this.setState({
-            pwd: e.target.value
+            password: e.target.value
         });
     }
 
     /*清空Input*/
     emitEmpty = (clearInput, name) => {
         clearInput({
-            pwd: ""
+            [name]: ""
         });
 
         this.setState({
-            pwd: ""
+            [name]: ""
         });
     }
 
     render() {
         const { getFieldDecorator, setFieldsValue } = this.props.form,
-            { userName, pwd } = this.state,
+            { userName, password } = this.state,
             userNameSuffix = userName ? <Icon type="close-circle" onClick={() => { this.emitEmpty(setFieldsValue, "userName") }} /> : "",
-            pwdSuffix = pwd ? <Icon type="close-circle" onClick={() => { this.emitEmpty(setFieldsValue, "pwd") }} /> : "";
+            pwdSuffix = password ? <Icon type="close-circle" onClick={() => { this.emitEmpty(setFieldsValue, "password") }} /> : "";
 
         return (
             <React.Fragment>
