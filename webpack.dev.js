@@ -7,6 +7,7 @@ module.exports = merge(common, {
         contentBase: "./src",
         compress: true,
         port: 8888,
+        host: "0.0.0.0",
         proxy: {
             "/manage/": "http://hrsaas.wintalent.cn:8080",
             "/api": {

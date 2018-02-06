@@ -27,8 +27,8 @@ class Login extends PureComponent {
                     return res.json();
                 }).then(data => {
                     if (data.state == 200) {
-                        data.data === "admin" ? 
-                            this.props.history.push("/compony")
+                        data.data === "admin" ?
+                            this.props.history.push("/company")
                             :
                             this.props.history.push("/set");
                     } else {
@@ -130,4 +130,4 @@ class Login extends PureComponent {
 
 const LoginForm = Form.create()(Login);
 
-export default LoginForm;
+export default LoginForm; 

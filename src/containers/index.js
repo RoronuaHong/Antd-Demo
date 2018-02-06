@@ -15,7 +15,7 @@ class App extends PureComponent {
             this.setState({
                 initDone: true
             });
-        }, 1000);
+        }, 500);
     }
 
     render() {        
