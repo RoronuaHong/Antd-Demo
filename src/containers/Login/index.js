@@ -110,9 +110,9 @@ class Login extends PureComponent {
                                     required: true,
                                     message: "请输入密码！"
                                 }]}
-                                suffix={userNameSuffix}
+                                suffix={pwdSuffix}
                                 type="password"
-                                onChange={this.userInput}
+                                onChange={this.pwdInput}
                                 placeholder="请输入密码"
                             />
                             <FormItem>
