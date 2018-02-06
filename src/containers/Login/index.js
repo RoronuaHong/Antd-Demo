@@ -4,6 +4,7 @@ import { Form, Icon, Input, Button, message, Checkbox } from "antd";
 import PALogoImg from "../../images/login/PALogo.png";
 import '../../styles/login.less';
 import { loginInfo } from "../../fetch/login";
+import { InputComponent } from "../../components/FormComponent/inputCop";
 
 const FormItem = Form.Item;
 
@@ -84,40 +85,36 @@ class Login extends PureComponent {
                             layout="vertical"
                             hideRequiredMark={ true }
                         >
-                            <FormItem label="用户名:">
-                                {
-                                    getFieldDecorator("userName", {
-                                        rules: [{
-                                            required: true,
-                                            message: "请输入用户名!"
-                                        }]
-                                    })(
-                                        <Input
-                                            suffix={ userNameSuffix }
-                                            type="user"
-                                            onChange={ this.userInput }
-                                            placeholder="请输入用户名"
-                                        />
-                                    )
-                                }
-                            </FormItem>
-                            <FormItem label="密码:">
-                                {
-                                    getFieldDecorator("password", {
-                                        rules: [{
-                                            required: true,
-                                            message: "请输入密码!"
-                                        }]
-                                    })(
-                                        <Input
-                                            suffix={ pwdSuffix }
-                                            type="password"
-                                            onChange={ this.pwdInput }
-                                            placeholder="请输入密码"
-                                        />
-                                    )
-                                }
-                            </FormItem>
+                            <InputComponent
+                                form={ this.props.form }
+                                FormItem={ Form.Item }
+                                Input={ Input }
+                                labels="用户名"
+                                idName="userName"
+                                rules={[{
+                                    required: true,
+                                    message: "请输入用户名！"
+                                }]}
+                                suffix={ userNameSuffix }
+                                type="user"
+                                onChange={ this.userInput }
+                                placeholder="请输入用户名"
+                            />
+                            <InputComponent
+                                form={this.props.form}
+                                FormItem={Form.Item}
+                                Input={Input}
+                                labels="密码"
+                                idName="password"
+                                rules={[{
+                                    required: true,
+                                    message: "请输入密码！"
+                                }]}
+                                suffix={userNameSuffix}
+                                type="password"
+                                onChange={this.userInput}
+                                placeholder="请输入密码"
+                            />
                             <FormItem>
                                 <Button type="primary" htmlType="submit" className="login-form-button">
                                     登录 >

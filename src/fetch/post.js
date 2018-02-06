@@ -1,19 +1,6 @@
 import "whatwg-fetch";
 import "es6-promise";
-
-//拼接对象
-function obj2Params(obj) {
-    let result = "",
-        item;
-
-    for(item in obj) {
-        result += "&" + item + "=" + encodeURIComponent(obj[item]);
-    }
-
-    result && (result = result.slice(1));
-
-    return result;
-}
+import qs from "qs";
 
 //发送ajax请求
 export function post(url, paramsObj) {
@@ -24,7 +11,7 @@ export function post(url, paramsObj) {
             "Accept": "application/json, text/json, */*",
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: obj2Params(paramsObj)
+        body: qs.stringify(paramsObj)
     });
 
     return result;
